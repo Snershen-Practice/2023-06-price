@@ -44,11 +44,17 @@ axios
     });
     console.log(crop.value);
     searchBtn.addEventListener("click", (e) => {
-      if (crop.value != "" && tempData.length > 0) {
+      if (crop.value != "") {
         inputFilter(apiData, crop.value);
-        renderData(tempData);
+        if (tempData.length > 0) {
+          renderData(tempData);
+        } else {
+          showList.innerHTML = `<td colspan="7" class="text-center p-3">查詢不到當日的交易資訊QQ</td>`;
+        }
+        console.log(true, tempData.length);
       } else {
-        showList.innerHTML === "查詢不到當日的交易資訊QQ";
+        alert("請輸入欲搜尋的品項");
+        console.log(false);
       }
     });
   });

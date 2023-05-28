@@ -18,7 +18,7 @@ axios
     return apiData;
   })
   .then((apiData) => {
-    console.log(apiData);
+    // console.log(apiData);
     filterBtn.addEventListener("click", (e) => {
       // console.log(filterBtn.children);
       //類別按鈕樣式切換
@@ -42,7 +42,6 @@ axios
       sortUpPrice(tempData, e.target.value);
       renderData(tempData);
     });
-    console.log(crop.value);
     searchBtn.addEventListener("click", (e) => {
       if (crop.value != "") {
         inputFilter(apiData, crop.value);
@@ -53,7 +52,7 @@ axios
         }
         console.log(true, tempData.length);
       } else {
-        alert("請輸入欲搜尋的品項");
+        alert("請輸入欲搜尋的作物名稱");
         console.log(false);
       }
     });

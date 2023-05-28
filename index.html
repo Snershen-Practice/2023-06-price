@@ -18,6 +18,9 @@
       <h1 class="logo"><a href="#">Product</a></h1>
       <div class="main rounded">
         <div class="button-group d-flex justify-content-center">
+          <button data-type="all" type="button" class="vegetablesBtn btn btn-type border-dark border-2 btn-type-active">
+            全部
+          </button>
           <button data-type="N04" type="button" class="vegetablesBtn btn btn-type border-dark border-2">蔬果</button>
           <button data-type="N05" type="button" class="fruitsBtn btn btn-type border-dark border-2">水果</button>
           <button data-type="N06" type="button" class="flowersBtn btn btn-type border-dark border-2">花卉</button>
@@ -34,12 +37,12 @@
           <p id="js-crop-name" class="show-result fw-bold"></p>
 
           <select id="js-select" class="sort-select border-secondary d-none d-md-block rounded p-2 pe-4">
-            <option>排序篩選</option>
-            <option>依上價排序</option>
-            <option>依中價排序</option>
-            <option>依下價排序</option>
-            <option>依平均價排序</option>
-            <option>依交易量排序</option>
+            <option disabled selected>排序篩選</option>
+            <option value="上價">依上價排序</option>
+            <option value="中價">依中價排序</option>
+            <optio value="下價">依下價排序</optio>
+            <option value="平均價">依平均價排序</option>
+            <option value="交易量">依交易量排序</option>
           </select>
         </div>
         <table class="market table me-4">

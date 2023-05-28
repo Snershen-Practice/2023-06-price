@@ -244,6 +244,11 @@ body {
   padding: 0.5rem 3.375rem;
 }
 
+.search:hover {
+  background: #899e39;
+  opacity: 0.8;
+}
+
 @media (max-width: 767px) {
   .seach-group {
     margin-bottom: 1.5rem;

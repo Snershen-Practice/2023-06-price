@@ -33,9 +33,8 @@
           </div>
           <button type="button" class="search text-white btn mb-2 ms-lg-2">搜尋</button>
         </div>
-        <div class="sort-content d-flex justify-content-md-between justify-content-center">
+        <div class="sort-content d-flex justify-content-md-between justify-content-center align-items-center">
           <p id="js-crop-name" class="show-result fw-bold"></p>
-
           <select id="js-select" class="sort-select border-secondary rounded p-2 pe-4">
             <option disabled selected>排序篩選</option>
             <option value="上價">依上價排序</option>
@@ -59,8 +58,8 @@
         <table class="market table me-lg-4">
           <thead class="js-sort-advanced">
             <tr>
-              <th width="15%">作物名稱</th>
-              <th width="15%">市場名稱</th>
+              <th width="15%">作物<span class="d-none d-md-inline">名稱</span></th>
+              <th width="15%">市場<span class="d-none d-md-inline">名稱</span></th>
               <th width="14%">
                 <div class="inline-flex sort-advanced">
                   上價

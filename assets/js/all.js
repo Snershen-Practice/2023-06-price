@@ -5,7 +5,7 @@ const select = document.querySelector("#js-select");
 const filterBtn = document.querySelector(".button-group");
 const searchBtn = document.querySelector(".search");
 const crop = document.querySelector("#crop");
-
+const searchResult = document.querySelector("#js-crop-name");
 let tempData = [];
 
 axios
@@ -21,20 +21,22 @@ axios
     // console.log(apiData);
     filterBtn.addEventListener("click", (e) => {
       // console.log(filterBtn.children);
-      //類別按鈕樣式切換
-      Array.from(filterBtn.children).forEach((childBtn) => {
-        childBtn.classList.remove("btn-type-active");
-      });
-      e.target.classList.add("btn-type-active");
-      //篩選出符合類別的資料
-      if (e.target.dataset.type === "all") {
-        renderData(apiData);
-      } else {
-        categoryFilter(apiData, e.target.dataset.type);
-        if (tempData.length > 0) {
-          renderData(tempData);
+      searchResult.textContent = "";
+      if (e.target.nodeName === "BUTTON") {
+        //類別按鈕樣式切換
+        Array.from(filterBtn.children).forEach((childBtn) => {
+          childBtn.classList.remove("btn-type-active");
+        });
+        e.target.classList.add("btn-type-active");
+        //篩選出符合類別的資料
+        if (e.target.dataset.type === "all") {
+          renderData(apiData);
+          tempData = apiData;
         } else {
-          showList.innerHTML = `<td colspan="7" class="text-center p-3">請輸入並搜尋想比價的作物名稱^＿^</td>`;
+          categoryFilter(apiData, e.target.dataset.type);
+          if (tempData.length > 0) {
+            renderData(tempData);
+          }
         }
       }
     });
@@ -44,17 +46,22 @@ axios
     });
     searchBtn.addEventListener("click", (e) => {
       if (crop.value != "") {
-        inputFilter(apiData, crop.value);
+        searchResult.textContent = `查看「${crop.value}」的比價結果`;
+        inputFilter(tempData, crop.value);
         if (tempData.length > 0) {
           renderData(tempData);
         } else {
+          tempData = apiData;
           showList.innerHTML = `<td colspan="7" class="text-center p-3">查詢不到當日的交易資訊QQ</td>`;
         }
-        console.log(true, tempData.length);
+        // console.log(true, tempData.length);
       } else {
+        searchResult.textContent = "";
         alert("請輸入欲搜尋的作物名稱");
         console.log(false);
+        crop.textContent = "";
       }
+      crop.value = "";
     });
   });
 
